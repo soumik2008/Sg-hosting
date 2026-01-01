@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: pyhost-engine
+    env: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn app:app
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.0
+      - key: FLASK_ENV
+        value: production
+    # Important: Enable auto-deploys for GitHub
+    autoDeploy: true
